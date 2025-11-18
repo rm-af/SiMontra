@@ -4,6 +4,7 @@ import 'package:kons/page_transitions.dart';
 import 'package:kons/Login.dart';
 import 'package:kons/riwayat_presensi.dart';
 import 'package:kons/riwayat_kegiatan.dart';
+import 'package:kons/isi_kegiatan.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -431,14 +432,20 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _currentIndex = index;
           });
-          if (index == 1) {
-            Navigator.of(context).push(
-              SlidePageRoute(page: const PresensiScreen()),
-            );
-          } else if (index == 3) {
-            Navigator.of(context).push(
-              SlidePageRoute(page: const RiwayatKegiatanScreen()),
-            );
+
+          switch (index) {
+            case 1:
+              Navigator.of(context).push(
+                SlidePageRoute(page: const PresensiScreen()),
+              );
+              break;
+            case 3:
+              Navigator.of(context).push(
+                SlidePageRoute(page: const IsiKegiatanScreen()),
+              );
+              break;
+            default:
+              break;
           }
         },
         type: BottomNavigationBarType.fixed,

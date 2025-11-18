@@ -7,24 +7,21 @@ class SlidePageRoute extends PageRouteBuilder {
       : super(
           pageBuilder: (context, animation, secondaryAnimation) => page,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const begin = Offset(1.0, 0.0);
+            const begin = Offset(0.1, 0.0);
             const end = Offset.zero;
             const curve = Curves.easeOutCubic;
 
-            var tween = Tween(begin: begin, end: end).chain(
+            final tween = Tween(begin: begin, end: end).chain(
               CurveTween(curve: curve),
             );
 
             return SlideTransition(
               position: animation.drive(tween),
-              child: FadeTransition(
-                opacity: animation,
-                child: child,
-              ),
+              child: child,
             );
           },
-          transitionDuration: const Duration(milliseconds: 300),
-          reverseTransitionDuration: const Duration(milliseconds: 250),
+          transitionDuration: const Duration(milliseconds: 250),
+          reverseTransitionDuration: const Duration(milliseconds: 220),
         );
 }
 
